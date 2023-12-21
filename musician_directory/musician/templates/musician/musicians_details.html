@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Musician
+{% endblock  %}
+
+{% block content %}
+<h2>Musician Details</h2>
+<a href="{% url 'edit_musician' musician.id %}">Edit</a>
+<a href=" {% url 'delete_musician' musician.id %}">Delete</a>
+<p>ID: {{ musician.id }}</p>
+<p>Name: {{ musician.first_name }} {{ musician.last_name }}</p>
+<p>Email: {{ musician.email }}</p>
+<p>Instrument Type: {{ musician.instrument_type }}</p>
+
+<!-- Display Musician details here if needed -->
+<h2>Albums</h2>
+    <table class="table table-striped table-sm">
+        <tr>
+            <th>ID</th>
+            <th>Album Name</th>
+            <th>Release Date</th>
+            <th>Rating</th>
+        </tr>
+        {% for album in albums %}
+            <tr>
+                <td>{{ album.id }}</td>
+                <td>{{ album.album_name }}</td>
+                <td>{{ album.release_date }}</td>
+                <td>{{ album.rating }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a href="{% url 'musicians_list' %}">Back to Musicians List</a>
+
+{% endblock %}

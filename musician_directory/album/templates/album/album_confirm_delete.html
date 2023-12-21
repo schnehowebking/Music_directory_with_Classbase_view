@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Delete Album</h2>
+  <p>Are you sure you want to delete "{{ album.name }}"?</p>
+
+  <form method="post" action="{% url 'delete_album' album.id %}">
+    {% csrf_token %}
+    <input type="submit" value="Confirm Delete">
+    <a href="{% url 'musicians_list' %}">Cancel</a>
+  </form>
+
+  {% if extra_data %}
+    <p>{{ extra_data }}</p>
+  {% endif %}
+{% endblock %}

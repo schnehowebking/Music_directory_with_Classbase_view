@@ -1,0 +1,14 @@
+{% extends 'base.html' %} 
+{% block title %} Musician {% endblock %} 
+{% block content %}
+
+<h2>Add Musician</h2>
+<form method="post" action="{% url 'add_musician' %}">
+  {% csrf_token %} 
+  {{ form.as_p }}
+  <button type="submit">Add Musician</button>
+</form>
+<br />
+<a href="{% url 'musicians_list' %}">Back to Musicians List</a>
+
+{% endblock %}
